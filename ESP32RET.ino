@@ -106,7 +106,7 @@ void loadSettings()
         SysSettings.numBuses = 1; //Currently we support CAN0
         SysSettings.isWifiActive = false;
         SysSettings.isWifiConnected = false;
-        strcpy(deviceName, MACC_NAME);
+        strcpy(deviceName, AP_NAME);
         strcpy(otaHost, "macchina.cc");
         strcpy(otaFilename, "/a0/files/a0ret.bin");
         pinMode(13, OUTPUT);
@@ -150,7 +150,7 @@ void loadSettings()
 
     if (nvPrefs.getString("wpa2Key", settings.WPA2Key, 64) == 0)
     {
-        strcpy(settings.WPA2Key, "aBigSecret");
+        strcpy(settings.WPA2Key, "18071992");
     }
     if (nvPrefs.getString("btname", settings.btName, 32) == 0)
     {

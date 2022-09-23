@@ -12,6 +12,18 @@ extern CRGB leds[NUM_LEDS];
 
 static IPAddress broadcastAddr(255,255,255,255);
 
+// Set web server port number to 80
+WiFiServer server(80);
+
+// Set your Static IP address
+IPAddress local_IP(192, 168, 1, 99);
+// Set your Gateway IP address
+IPAddress gateway(192, 168, 1, 1);
+
+IPAddress subnet(255, 255, 0, 0);
+IPAddress primaryDNS(8, 8, 8, 8);   //optional
+IPAddress secondaryDNS(8, 8, 4, 4); //optional
+
 WiFiManager::WiFiManager()
 {
     lastBroadcast = 0;
@@ -23,6 +35,12 @@ void WiFiManager::setup()
     {        
         WiFi.mode(WIFI_STA);
         WiFi.setSleep(true); //sleeping could cause delays
+
+        // Configures static IP address
+        if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+            Serial.println("STA Failed to configure");
+        }
+
         WiFi.begin((const char *)settings.SSID, (const char *)settings.WPA2Key);
 
         WiFiEventId_t eventID = WiFi.onEvent([](WiFiEvent_t event, WiFiEventInfo_t info) 
