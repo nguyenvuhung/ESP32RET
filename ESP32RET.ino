@@ -106,11 +106,11 @@ void loadSettings()
         SysSettings.numBuses = 1; //Currently we support CAN0
         SysSettings.isWifiActive = false;
         SysSettings.isWifiConnected = false;
-        strcpy(deviceName, AP_NAME);
+        strcpy(deviceName, MACC_NAME);
         strcpy(otaHost, "macchina.cc");
         strcpy(otaFilename, "/a0/files/a0ret.bin");
         pinMode(13, OUTPUT);
-        digitalWrite(13, LOW);
+        digitalWrite(13, HIGH);
         delay(100);
         FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
         FastLED.setBrightness(  BRIGHTNESS );
@@ -144,7 +144,7 @@ void loadSettings()
 
     if (nvPrefs.getString("SSID", settings.SSID, 32) == 0)
     {
-        strcpy(settings.SSID, deviceName);
+        strcpy(settings.SSID, "Hung-VinFast");
         strcat(settings.SSID, "SSID");
     }
 

@@ -16,9 +16,9 @@ static IPAddress broadcastAddr(255,255,255,255);
 WiFiServer server(80);
 
 // Set your Static IP address
-IPAddress local_IP(192, 168, 1, 99);
+IPAddress local_IP(192, 168, 137, 99);
 // Set your Gateway IP address
-IPAddress gateway(192, 168, 1, 1);
+IPAddress gateway(192, 168, 137, 1);
 
 IPAddress subnet(255, 255, 0, 0);
 IPAddress primaryDNS(8, 8, 8, 8);   //optional
@@ -41,7 +41,7 @@ void WiFiManager::setup()
             Serial.println("STA Failed to configure");
         }
 
-        WiFi.begin((const char *)settings.SSID, (const char *)settings.WPA2Key);
+        WiFi.begin((const char *)"Hung-VinFast", (const char *)"18071992");
 
         WiFiEventId_t eventID = WiFi.onEvent([](WiFiEvent_t event, WiFiEventInfo_t info) 
         {
